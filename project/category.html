@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Page</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and background */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+
+        /* Main Layout */
+        .category-page-container {
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .go-home-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .go-home-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .filter-category {
+            margin-bottom: 20px;
+        }
+
+        .filter-category h3 {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .filter-category input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .apply-filters-btn {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-filters-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Products Container */
+        .products-container {
+            flex: 1;
+            padding-left: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            width: 30%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .product-item h3 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .product-item p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Price Range */
+        .filter-category input[type="range"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .filter-category label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .category-page-container {
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .products-container {
+                padding-left: 0;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-item {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="category-page-container">
+
+    <!-- Top Bar with "Go to Homepage" Button -->
+    <div class="top-bar">
+        <button class="go-home-btn" onclick="window.location.href='index.html';">Go to Homepage</button>
+    </div>
+
+    <!-- Main Layout -->
+    <div style="display: flex;">
+        <!-- Sidebar for Filters -->
+        <div class="sidebar">
+            <h2>Filters</h2>
+            <form id="filter-form">
+                <div class="filter-category">
+                    <h3>Price</h3>
+                    <input type="range" id="price-range" min="0" max="500" value="250">
+                    <label for="price-range">Up to $<span id="price-value">250</span></label>
+                </div>
+
+                <div class="filter-category">
+                    <h3>Brand</h3>
+                    <input type="checkbox" id="brand-1"> <label for="brand-1">Brand 1</label><br>
+                    <input type="checkbox" id="brand-2"> <label for="brand-2">Brand 2</label><br>
+                    <input type="checkbox" id="brand-3"> <label for="brand-3">Brand 3</label><br>
+                </div>
+
+                <div class="filter-category">
+                    <h3>Color</h3>
+                    <input type="checkbox" id="color-red"> <label for="color-red">Red</label><br>
+                    <input type="checkbox" id="color-blue"> <label for="color-blue">Blue</label><br>
+                    <input type="checkbox" id="color-green"> <label for="color-green">Green</label><br>
+                </div>
+
+                <button type="submit" class="apply-filters-btn">Apply Filters</button>
+            </form>
+        </div>
+
+        <!-- Main Content for Products -->
+        <div class="products-container">
+            <div class="product-item">
+                <img src="images/image4.jpeg" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>$250</p>
+            </div>
+            <div class="product-item">
+                <img src="images/image5.jpg" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$300</p>
+            </div>
+            <div class="product-item">
+                <img src="images/image8.jpg" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>$180</p>
+            </div>
+            <!-- Add more product items here -->
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Update price value display
+    const priceRange = document.getElementById('price-range');
+    const priceValue = document.getElementById('price-value');
+
+    priceRange.addEventListener('input', function () {
+        priceValue.textContent = priceRange.value;
+    });
+
+    // Handle Filter Form Submission
+    const filterForm = document.getElementById('filter-form');
+
+    filterForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const selectedBrands = [];
+        const selectedColors = [];
+        
+        // Get selected brands
+        if (document.getElementById('brand-1').checked) selectedBrands.push('Brand 1');
+        if (document.getElementById('brand-2').checked) selectedBrands.push('Brand 2');
+        if (document.getElementById('brand-3').checked) selectedBrands.push('Brand 3');
+
+        // Get selected colors
+        if (document.getElementById('color-red').checked) selectedColors.push('Red');
+        if (document.getElementById('color-blue').checked) selectedColors.push('Blue');
+        if (document.getElementById('color-green').checked) selectedColors.push('Green');
+
+        // Get selected price
+        const maxPrice = priceRange.value;
+
+        // You can now use these filter values to filter the products (via backend or JavaScript).
+        console.log('Selected Brands:', selectedBrands);
+        console.log('Selected Colors:', selectedColors);
+        console.log('Max Price:', maxPrice);
+    });
+</script>
+
+</body>
+</html>
